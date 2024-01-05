@@ -14,5 +14,10 @@ namespace EbookPlatform.Areas.Admin.Controllers
         {
             return "test github";
         }
+
+        public string myaction2()
+        {
+            return "test github 2";
+        }
     }
 }
