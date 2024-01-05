@@ -1,0 +1,198 @@
+﻿
+@{
+    ViewData["Title"] = "ShowDetails";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    
+}
+
+
+
+
+<!-- Start content -->
+<div class="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="card-box">
+                    <div class="dropdown pull-right">
+                        <a href="#" class="dropdown-toggle card-drop" data-toggle="dropdown" aria-expanded="false">
+                            <i class="zmdi zmdi-more-vert"></i>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">فعا</a></li>
+                            <li><a href="#">متن اول</a></li>
+                            <li><a href="#">متن دوم</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">متن پاورقی</a></li>
+                        </ul>
+                    </div>
+
+                    <h4 class="header-title m-t-0 m-b-30">نمونه اول</h4>
+
+                    <form action="#" data-parsley-validate novalidate>
+                        <div class="form-group">
+                            <label for="userName">آیدی</label>
+                            <input type="text" name="nick" parsley-trigger="change" required
+                                   placeholder="ایدی کتاب" class="form-control" id="userName" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="emailAddress">عنوان</label>
+                            <input type="text" name="email" parsley-trigger="change" required
+                                   placeholder="هنوان کتاب را وارد کنید" class="form-control" id="emailAddress">
+                        </div>
+                        <div class="form-group">
+                            <label for="emailAddress">قیمت</label>
+                            <input type="text" name="email" parsley-trigger="change" required
+                                   placeholder="قیمت کتاب را وارد کنید" class="form-control" id="emailAddress">
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="discount">تفیف</label>
+                            <input id="chckTakhfif" type="checkbox" checked data-plugin="switchery" data-color="#4c5667" data-size="large" onchange="EnableDisableTextBox(this)" onclick="" />
+
+                            <div class="form-group">
+                                <label for="userName">میزان تخفیف</label>
+                                <input type="text" name="nick" parsley-trigger="change" required
+                                       placeholder="میزان تخفیف" class="form-control" id="mTakhfif"
+                                       disabled="disabled">
+                            </div>
+
+
+
+                        </div>
+                        <div class="form-group">
+                            <label for="pass1">تعداد صفحات</label>
+                            <input id="pass1" type="number" placeholder="تعداد صفحات" required
+                                   class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="passWord2">تعداد فروش</label>
+                            <input data-parsley-equalto="#pass1" type="number" required
+                                   placeholder="تعداد فروش" class="form-control" id="passWord2">
+                        </div>
+                        <div class="form-group">
+                            <label for="passWord2">عنوان لاتین</label>
+                            <input data-parsley-equalto="#pass1" type="text" required
+                                   placeholder="عنوان لاتین" class="form-control" id="passWord2">
+                        </div>
+                        <div class="form-group">
+                            <label for="datepicker"> تاریخ نشر</label>
+                            <div>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="mm/dd/yyyy" id="datepicker">
+                                    <span class="input-group-addon bg-primary b-0 text-white"><i class="ti-calendar"></i></span>
+                                </div><!-- input-group -->
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="finalver">قیمت نسخه چاپی</label>
+                            <input data-parsley-equalto="#pass1" type="number" required
+                                   placeholder="قیمت نسخه چاپی" class="form-control" id="finalver">
+                        </div>
+                        <div class="form-group">
+                            <label for="finalver">نویسنده</label>
+                            <input data-parsley-equalto="#pass1" type="text" required
+                                   placeholder="نویسنده" class="form-control" id="finalver">
+                        </div>
+                        <div class="form-group">
+                            <label for="mot1">مترجم</label>
+                            <input data-parsley-equalto="#pass1" type="text" required
+                                   placeholder="مترجم" class="form-control" id="mot1">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="motarjem">ناشر</label>
+                            <input data-parsley-equalto="#pass1" type="text" required
+                                   placeholder="ناشر" class="form-control" id="motarjem">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="motarjem">زبان</label>
+                            <input data-parsley-equalto="#pass1" type="text" required
+                                   placeholder="زبان" class="form-control" id="motarjem">
+                        </div>
+
+
+                        <div class="form-group text-right m-b-0">
+                            <button class="btn btn-primary waves-effect waves-light" type="submit">
+                                ثبت
+                            </button>
+                            <button type="reset" class="btn btn-default waves-effect waves-light m-l-5">
+                                لغو
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+            </div><!-- end col -->
+
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card-box">
+
+                        <div class="dropdown pull-right">
+                            <a href="#" class="dropdown-toggle card-drop" data-toggle="dropdown" aria-expanded="false">
+                                <i class="zmdi zmdi-more-vert"></i>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#">فعال</a></li>
+                                <li><a href="#">متن اول</a></li>
+                                <li><a href="#">متن دوم</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">متن پاورقی</a></li>
+                            </ul>
+                        </div>
+
+                        <h4 class="header-title m-t-0 m-b-30">تصویر کتاب</h4>
+
+                        <input type="file" class="dropify" data-default-file="assets/images/gallery/1.jpg" />
+                    </div>
+                    <div class="card-box">
+
+                        <div class="dropdown pull-right">
+                            <a href="#" class="dropdown-toggle card-drop" data-toggle="dropdown" aria-expanded="false">
+                                <i class="zmdi zmdi-more-vert"></i>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#">فعال</a></li>
+                                <li><a href="#">متن اول</a></li>
+                                <li><a href="#">متن دوم</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">متن پاورقی</a></li>
+                            </ul>
+                        </div>
+
+                        <h4 class="header-title m-t-0 m-b-30">فایل کتاب</h4>
+
+                        <input type="file" class="dropify" data-max-file-size="1M" />
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="card-box">
+                            <form method="post">
+                                <h4 class="header-title m-t-0 m-b-30">توضیحات</h4>
+                                <textarea id="elm1" name="area"></textarea>
+                            </form>
+                        </div>
+                    </div>
+
+
+
+
+                </div><!-- end col -->
+            </div>
+        </div>
+
+    </div>
+
+
+
+</div>
+
+
+
+<script src="/AdminPanel/assets/plugins/switchery/switchery.min.js"></script>
+
+
+
