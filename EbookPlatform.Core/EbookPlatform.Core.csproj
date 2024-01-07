@@ -10,7 +10,6 @@
     <Folder Include="ExtentionMethods\" />
     <Folder Include="Security\" />
     <Folder Include="NotificationSender\" />
-    <Folder Include="Service\Interface\" />
     <Folder Include="ViewModels\" />
   </ItemGroup>
 
@@ -26,6 +25,10 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EbookPlatform.DataLayer\EbookPlatform.DataLayer.csproj" />
   </ItemGroup>
 
 </Project>

@@ -6,6 +6,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting; 
 using EbookPlatform;
 using Microsoft.EntityFrameworkCore;
+using EbookPlatform.Core;
+using EbookPlatform.Core.Service.Interface;
+using EbookPlatform.Core.Service;
 
 internal class Program
 {
@@ -20,10 +23,12 @@ internal class Program
             options.UseSqlServer("Data Source =.;Initial Catalog=EbookPlatform_DB;Integrated Security=true");
             
         });
+        builder.Services.AddTransient<ICategoryService, CategoryService>();
         var app = builder.Build();
         app.UseRouting();
         app.UseStaticFiles();
         //app.UseMvcWithDefaultRoute();
+
 
         app.MapControllerRoute(
             name:"Area",

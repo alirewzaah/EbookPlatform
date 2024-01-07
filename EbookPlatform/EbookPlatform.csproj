@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
     <Folder Include="wwwroot\AdminPanel\assets\plugins\jstree\themes\default\" />
+    <Folder Include="wwwroot\CssSite\assets\images\menu-main\card\" />
     <Folder Include="wwwroot\CssSite\Css\" />
     <Folder Include="wwwroot\CssSite\Js\" />
     <Folder Include="wwwroot\CssSite\SiteImages\" />
@@ -31,6 +31,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\EbookPlatform.Core\EbookPlatform.Core.csproj" />
     <ProjectReference Include="..\EbookPlatform.DataLayer\EbookPlatform.DataLayer.csproj" />
   </ItemGroup>
 

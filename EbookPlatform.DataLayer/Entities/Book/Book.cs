@@ -73,8 +73,10 @@ namespace EbookPlatform
         public int languageID { get; set; }
         public virtual Language language { get; set; }
         public List<Rating> ratings { get; set; }
-        public int categoryID { get; set; }
-        public virtual Category category { get; set; }
+        public virtual List<BookCategory>? bookCategories { get; set; }  
+        //public int categoryID { get; set; }
+        //public virtual Category category { get; set; }
+
 
 
         public Book()

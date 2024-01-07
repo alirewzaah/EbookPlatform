@@ -110,9 +110,6 @@ namespace EbookPlatform.DataLayer.Migrations
                         .HasMaxLength(300)
                         .HasColumnType("nvarchar(300)");
 
-                    b.Property<int>("categoryID")
-                        .HasColumnType("int");
-
                     b.Property<byte?>("discountPercentage")
                         .HasColumnType("tinyint");
 
@@ -179,9 +176,6 @@ namespace EbookPlatform.DataLayer.Migrations
                     b.Property<int?>("shelfID")
                         .HasColumnType("int");
 
-                    b.Property<int?>("subCategoryID")
-                        .HasColumnType("int");
-
                     b.Property<int>("translatorID")
                         .HasColumnType("int");
 
@@ -189,19 +183,38 @@ namespace EbookPlatform.DataLayer.Migrations
 
                     b.HasIndex("authorID");
 
-                    b.HasIndex("categoryID");
-
                     b.HasIndex("languageID");
 
                     b.HasIndex("publisherID");
 
                     b.HasIndex("shelfID");
 
-                    b.HasIndex("subCategoryID");
-
                     b.HasIndex("translatorID");
 
                     b.ToTable("books");
+                });
+
+            modelBuilder.Entity("EbookPlatform.BookCategory", b =>
+                {
+                    b.Property<int>("bookCategoryID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("bookCategoryID"), 1L, 1);
+
+                    b.Property<int>("bookID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("categoryID")
+                        .HasColumnType("int");
+
+                    b.HasKey("bookCategoryID");
+
+                    b.HasIndex("bookID");
+
+                    b.HasIndex("categoryID");
+
+                    b.ToTable("bookCategories");
                 });
 
             modelBuilder.Entity("EbookPlatform.Cart", b =>
@@ -278,12 +291,17 @@ namespace EbookPlatform.DataLayer.Migrations
                     b.Property<bool>("isDeleted")
                         .HasColumnType("bit");
 
+                    b.Property<int?>("parentID")
+                        .HasColumnType("int");
+
                     b.Property<string>("title")
                         .IsRequired()
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
                     b.HasKey("categoryID");
+
+                    b.HasIndex("parentID");
 
                     b.ToTable("categories");
                 });
@@ -596,9 +614,6 @@ namespace EbookPlatform.DataLayer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("subCategoryID"), 1L, 1);
 
-                    b.Property<int>("categoryID")
-                        .HasColumnType("int");
-
                     b.Property<string>("description")
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
@@ -612,8 +627,6 @@ namespace EbookPlatform.DataLayer.Migrations
                         .HasColumnType("nvarchar(50)");
 
                     b.HasKey("subCategoryID");
-
-                    b.HasIndex("categoryID");
 
                     b.ToTable("subCategories");
                 });
@@ -747,12 +760,6 @@ namespace EbookPlatform.DataLayer.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("EbookPlatform.Category", "category")
-                        .WithMany("books")
-                        .HasForeignKey("categoryID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("EbookPlatform.Language", "language")
                         .WithMany("books")
                         .HasForeignKey("languageID")
@@ -769,10 +776,6 @@ namespace EbookPlatform.DataLayer.Migrations
                         .WithMany("books")
                         .HasForeignKey("shelfID");
 
-                    b.HasOne("EbookPlatform.SubCategory", null)
-                        .WithMany("books")
-                        .HasForeignKey("subCategoryID");
-
                     b.HasOne("EbookPlatform.Translator", "translator")
                         .WithMany("books")
                         .HasForeignKey("translatorID")
@@ -781,13 +784,30 @@ namespace EbookPlatform.DataLayer.Migrations
 
                     b.Navigation("author");
 
-                    b.Navigation("category");
-
                     b.Navigation("language");
 
                     b.Navigation("publisher");
 
                     b.Navigation("translator");
+                });
+
+            modelBuilder.Entity("EbookPlatform.BookCategory", b =>
+                {
+                    b.HasOne("EbookPlatform.Book", "book")
+                        .WithMany("bookCategories")
+                        .HasForeignKey("bookID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("EbookPlatform.Category", "Category")
+                        .WithMany("books")
+                        .HasForeignKey("categoryID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+
+                    b.Navigation("book");
                 });
 
             modelBuilder.Entity("EbookPlatform.Cart", b =>
@@ -818,6 +838,15 @@ namespace EbookPlatform.DataLayer.Migrations
                     b.Navigation("book");
 
                     b.Navigation("cart");
+                });
+
+            modelBuilder.Entity("EbookPlatform.Category", b =>
+                {
+                    b.HasOne("EbookPlatform.Category", "category")
+                        .WithMany("children")
+                        .HasForeignKey("parentID");
+
+                    b.Navigation("category");
                 });
 
             modelBuilder.Entity("EbookPlatform.Comment", b =>
@@ -906,17 +935,6 @@ namespace EbookPlatform.DataLayer.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("EbookPlatform.SubCategory", b =>
-                {
-                    b.HasOne("EbookPlatform.Category", "category")
-                        .WithMany("SubCategories")
-                        .HasForeignKey("categoryID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("category");
-                });
-
             modelBuilder.Entity("EbookPlatform.SubComment", b =>
                 {
                     b.HasOne("EbookPlatform.Comment", "comment")
@@ -943,6 +961,8 @@ namespace EbookPlatform.DataLayer.Migrations
 
             modelBuilder.Entity("EbookPlatform.Book", b =>
                 {
+                    b.Navigation("bookCategories");
+
                     b.Navigation("comments");
 
                     b.Navigation("ratings");
@@ -955,9 +975,9 @@ namespace EbookPlatform.DataLayer.Migrations
 
             modelBuilder.Entity("EbookPlatform.Category", b =>
                 {
-                    b.Navigation("SubCategories");
-
                     b.Navigation("books");
+
+                    b.Navigation("children");
                 });
 
             modelBuilder.Entity("EbookPlatform.Comment", b =>
@@ -993,11 +1013,6 @@ namespace EbookPlatform.DataLayer.Migrations
                 });
 
             modelBuilder.Entity("EbookPlatform.Shelf", b =>
-                {
-                    b.Navigation("books");
-                });
-
-            modelBuilder.Entity("EbookPlatform.SubCategory", b =>
                 {
                     b.Navigation("books");
                 });

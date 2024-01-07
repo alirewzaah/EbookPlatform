@@ -22,9 +22,9 @@ namespace EbookPlatform
 
 
         //relaitons
-        public  int categoryID { get; set; }
-        public virtual Category category { get; set; }
-        public virtual List<Book> books { get; set; }
+       // public  int categoryID { get; set; }
+     //   public virtual Category category { get; set; }
+     //   public virtual List<Book> books { get; set; }
         public SubCategory()
         {
             

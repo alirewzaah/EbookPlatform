@@ -34,6 +34,7 @@ namespace EbookPlatform
         public DbSet<AdminUser> adminUsers { get; set; }
         public DbSet<Shelf> shelves { get; set; }
         public DbSet<Library> libraries { get; set; }
+        public DbSet<BookCategory> bookCategories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -44,26 +45,26 @@ namespace EbookPlatform
                 permissionTitle = "ContentManager",
 
             },
-new Permission()
-{
-    permissionID = 2,
-    permissionTitle = "UserManager"
-},
- new Permission()
- {
-     permissionID = 3,
-     permissionTitle = "AdminUserManager"
- },
-new Permission()
-{
-    permissionID = 4,
-    permissionTitle = "CommentsManager"
-},
- new Permission()
- {
-     permissionID = 5,
-     permissionTitle = "ReportsManager"
- }
+            new Permission()
+            {
+                permissionID = 2,
+                permissionTitle = "UserManager"
+            },
+            new Permission()
+            {
+                permissionID = 3,
+                permissionTitle = "AdminUserManager"
+            },
+            new Permission()
+            {
+                permissionID = 4,
+                permissionTitle = "CommentsManager"
+            },
+            new Permission()
+            {
+                permissionID = 5,
+                permissionTitle = "ReportsManager"
+            }
 );
             modelBuilder.Entity<Role>().HasData(new Role
             {
@@ -117,10 +118,24 @@ new Permission()
             #endregion
 
 
-            #region[SeedData-Book]
+            #region[SeedData-Category]
+            /*
+            modelBuilder.Entity<Category>().HasData(new Category()
+            {
+                categoryID = 1,
+                title = "داستان و رمان خارجی",
+                isDeleted = false
 
+            },
+            new Category()
+            {
+                categoryID = 1,
+                title = "داستان و رمان ایرانی",
+                isDeleted = false
+            },
+            );
 
-
+            */
             #endregion
             base.OnModelCreating(modelBuilder);
         }
