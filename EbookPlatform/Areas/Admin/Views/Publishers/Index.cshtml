@@ -1,5 +1,7 @@
-﻿@{
-    ViewData["Title"] = "Pulishers";
+﻿@model IEnumerable<EbookPlatform.Publisher>
+
+@{
+    ViewData["Title"] = "publishers";
     Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -15,7 +17,8 @@
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="m-b-30">
-                                    <button id="addToTable" class="btn btn-primary waves-effect waves-light">افزودن <i class="fa fa-plus"></i></button>
+                                    <a asp-area="Admin" asp-controller="Publishers" asp-action="Create"><button class="btn btn-primary waves-effect waves-light">افزودن <i class="fa fa-plus"></i></button></a>
+
                                 </div>
                             </div>
                         </div>
@@ -25,170 +28,30 @@
                                 <thead>
                                     <tr>
                                         <th>ایدی</th>
-                                        <th>نام</th>
+                                        <th>نام ناشر</th>
                                         <th>توضیحات</th>
                                         <th>فعالیت</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="gradeX">
-                                        <td>نوع 1</td>
-                                        <td>
-                                            اینترنت اکسپلورر 4.0
-                                        </td>
-                                        <td>ویندوز  95+</td>
-                                        <td class="actions">
-                                            <a href="#" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
-                                            <a href="#" class="hidden on-editing cancel-row"><i class="fa fa-times"></i></a>
-                                            <a href="#" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
-                                            <a href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr class="gradeC">
-                                        <td>نوع 1</td>
-                                        <td>
-                                            اینترنت اکسپلورر 5.0
-                                        </td>
-                                        <td>ویندوز  95+</td>
-                                        <td class="actions">
-                                            <a href="#" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
-                                            <a href="#" class="hidden on-editing cancel-row"><i class="fa fa-times"></i></a>
-                                            <a href="#" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
-                                            <a href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr class="gradeA">
-                                        <td>نوع 1</td>
-                                        <td>
-                                            اینترنت اکسپلورر 5.5
-                                        </td>
-                                        <td>ویندوز  95+</td>
-                                        <td class="actions">
-                                            <a href="#" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
-                                            <a href="#" class="hidden on-editing cancel-row"><i class="fa fa-times"></i></a>
-                                            <a href="#" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
-                                            <a href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr class="gradeA">
-                                        <td>نوع 1</td>
-                                        <td>
-                                            اکسپلور 6
-                                        </td>
-                                        <td>ویندوز 98+</td>
-                                        <td class="actions">
-                                            <a href="#" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
-                                            <a href="#" class="hidden on-editing cancel-row"><i class="fa fa-times"></i></a>
-                                            <a href="#" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
-                                            <a href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr class="gradeA">
-                                        <td>نوع 1</td>
-                                        <td>اینترنت اکسپلورر 7</td>
-                                        <td>ویندوز اکس پی SP2+</td>
-                                        <td class="actions">
-                                            <a href="#" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
-                                            <a href="#" class="hidden on-editing cancel-row"><i class="fa fa-times"></i></a>
-                                            <a href="#" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
-                                            <a href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr class="gradeA">
-                                        <td>نوع 1</td>
-                                        <td>AOL browser (AOL desktop)</td>
-                                        <td>ویندوز اکس پی</td>
-                                        <td class="actions">
-                                            <a href="#" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
-                                            <a href="#" class="hidden on-editing cancel-row"><i class="fa fa-times"></i></a>
-                                            <a href="#" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
-                                            <a href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr class="gradeA">
-                                        <td>نوع دوم</td>
-                                        <td>موزیلا 1.0</td>
-                                        <td>Win 98+ / OSX.2+</td>
-                                        <td class="actions">
-                                            <a href="#" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
-                                            <a href="#" class="hidden on-editing cancel-row"><i class="fa fa-times"></i></a>
-                                            <a href="#" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
-                                            <a href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr class="gradeA">
-                                        <td>نوع دوم</td>
-                                        <td>موزیلا 1.5</td>
-                                        <td>Win 98+ / OSX.2+</td>
-                                        <td class="actions">
-                                            <a href="#" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
-                                            <a href="#" class="hidden on-editing cancel-row"><i class="fa fa-times"></i></a>
-                                            <a href="#" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
-                                            <a href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr class="gradeA">
-                                        <td>نوع دوم</td>
-                                        <td>موزیلا 2.0</td>
-                                        <td>Win 98+ / OSX.2+</td>
-                                        <td class="actions">
-                                            <a href="#" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
-                                            <a href="#" class="hidden on-editing cancel-row"><i class="fa fa-times"></i></a>
-                                            <a href="#" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
-                                            <a href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr class="gradeA">
-                                        <td>نوع دوم</td>
-                                        <td>موزیلا 3.0</td>
-                                        <td>Win 2k+ / OSX.3+</td>
-                                        <td class="actions">
-                                            <a href="#" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
-                                            <a href="#" class="hidden on-editing cancel-row"><i class="fa fa-times"></i></a>
-                                            <a href="#" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
-                                            <a href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
-                                        </td>
-                                    </tr>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr class="gradeX">
+                                            <td>@item.publisherID</td>
+                                            <td>
+                                                @item.publisherFullName
+                                            </td>
+                                            <td>@item.description</td>
+                                            <td class="actions">
+                                                <a href="#" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
+                                                <a href="#" class="hidden on-editing cancel-row"><i class="fa fa-times"></i></a>
+                                                <a href="/Admin/Publishers/Edit/@item.publisherID" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
+                                                <a href="/Admin/Publishers/Delete/@item.publisherID" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
+                                            </td>
+                                        </tr>
+                                    }
 
-                                    <tr class="gradeX">
-                                        <td>نوع 1</td>
-                                        <td>
-                                            اینترنت اکسپلورر 4.0
-                                        </td>
-                                        <td>ویندوز  95+</td>
-                                        <td class="actions">
-                                            <a href="#" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
-                                            <a href="#" class="hidden on-editing cancel-row"><i class="fa fa-times"></i></a>
-                                            <a href="#" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
-                                            <a href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr class="gradeC">
-                                        <td>نوع 1</td>
-                                        <td>
-                                            اینترنت اکسپلورر 5.0
-                                        </td>
-                                        <td>ویندوز  95+</td>
-                                        <td class="actions">
-                                            <a href="#" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
-                                            <a href="#" class="hidden on-editing cancel-row"><i class="fa fa-times"></i></a>
-                                            <a href="#" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
-                                            <a href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr class="gradeA">
-                                        <td>نوع 1</td>
-                                        <td>
-                                            اینترنت اکسپلورر 5.5
-                                        </td>
-                                        <td>ویندوز  95+</td>
-                                        <td class="actions">
-                                            <a href="#" class="hidden on-editing save-row"><i class="fa fa-save"></i></a>
-                                            <a href="#" class="hidden on-editing cancel-row"><i class="fa fa-times"></i></a>
-                                            <a href="#" class="on-default edit-row"><i class="fa fa-pencil"></i></a>
-                                            <a href="#" class="on-default remove-row"><i class="fa fa-trash-o"></i></a>
-                                        </td>
-                                    </tr>
+
 
 
                                 </tbody>
@@ -199,6 +62,7 @@
 
                 </div> <!-- end panel -->
             </div>
+
 
 
 

@@ -22,7 +22,11 @@ namespace EbookPlatform
         public bool isDeleted { get; set; }
 
         //relations
-        public virtual List<Book> books { get; set; } 
+        public virtual List<Book>? books { get; set; }
+        public Author()
+        {
+
+        }
 
     }
 }

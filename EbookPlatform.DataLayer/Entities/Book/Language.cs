@@ -22,7 +22,7 @@ namespace EbookPlatform
 
 
         //relations
-        public virtual List<Book> books { get; set; }   
+        public virtual List<Book>? books { get; set; }   
         public Language() { }   
     }
 }

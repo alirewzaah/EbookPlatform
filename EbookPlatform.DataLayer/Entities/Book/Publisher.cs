@@ -23,7 +23,7 @@ namespace EbookPlatform
 
 
         //realtions
-        public virtual List<Book> books { get; set; }   
+        public virtual List<Book>? books { get; set; }   
         public Publisher() { }  
 
 

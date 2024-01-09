@@ -52,7 +52,7 @@ namespace EbookPlatform.DataLayer.Migrations
 
                     b.HasIndex("roleID");
 
-                    b.ToTable("adminUsers");
+                    b.ToTable("adminUsers", (string)null);
 
                     b.HasData(
                         new
@@ -87,7 +87,7 @@ namespace EbookPlatform.DataLayer.Migrations
 
                     b.HasKey("authorID");
 
-                    b.ToTable("authors");
+                    b.ToTable("authors", (string)null);
                 });
 
             modelBuilder.Entity("EbookPlatform.Book", b =>
@@ -191,7 +191,7 @@ namespace EbookPlatform.DataLayer.Migrations
 
                     b.HasIndex("translatorID");
 
-                    b.ToTable("books");
+                    b.ToTable("books", (string)null);
                 });
 
             modelBuilder.Entity("EbookPlatform.BookCategory", b =>
@@ -214,7 +214,7 @@ namespace EbookPlatform.DataLayer.Migrations
 
                     b.HasIndex("categoryID");
 
-                    b.ToTable("bookCategories");
+                    b.ToTable("bookCategories", (string)null);
                 });
 
             modelBuilder.Entity("EbookPlatform.Cart", b =>
@@ -244,7 +244,7 @@ namespace EbookPlatform.DataLayer.Migrations
 
                     b.HasIndex("userID");
 
-                    b.ToTable("carts");
+                    b.ToTable("carts", (string)null);
                 });
 
             modelBuilder.Entity("EbookPlatform.CartItem", b =>
@@ -273,7 +273,7 @@ namespace EbookPlatform.DataLayer.Migrations
 
                     b.HasIndex("cartID");
 
-                    b.ToTable("cartItems");
+                    b.ToTable("cartItems", (string)null);
                 });
 
             modelBuilder.Entity("EbookPlatform.Category", b =>
@@ -303,7 +303,7 @@ namespace EbookPlatform.DataLayer.Migrations
 
                     b.HasIndex("parentID");
 
-                    b.ToTable("categories");
+                    b.ToTable("categories", (string)null);
                 });
 
             modelBuilder.Entity("EbookPlatform.Comment", b =>
@@ -340,7 +340,7 @@ namespace EbookPlatform.DataLayer.Migrations
 
                     b.HasIndex("userID");
 
-                    b.ToTable("comments");
+                    b.ToTable("comments", (string)null);
                 });
 
             modelBuilder.Entity("EbookPlatform.DataLayer.Entities.AdminArea.Role.Permission", b =>
@@ -357,7 +357,7 @@ namespace EbookPlatform.DataLayer.Migrations
 
                     b.HasKey("permissionID");
 
-                    b.ToTable("permissions");
+                    b.ToTable("permissions", (string)null);
 
                     b.HasData(
                         new
@@ -401,7 +401,7 @@ namespace EbookPlatform.DataLayer.Migrations
 
                     b.HasKey("roleID");
 
-                    b.ToTable("roles");
+                    b.ToTable("roles", (string)null);
 
                     b.HasData(
                         new
@@ -431,7 +431,7 @@ namespace EbookPlatform.DataLayer.Migrations
 
                     b.HasIndex("roleid");
 
-                    b.ToTable("rolePermissions");
+                    b.ToTable("rolePermissions", (string)null);
 
                     b.HasData(
                         new
@@ -484,7 +484,7 @@ namespace EbookPlatform.DataLayer.Migrations
 
                     b.HasIndex("userID");
 
-                    b.ToTable("favorites");
+                    b.ToTable("favorites", (string)null);
                 });
 
             modelBuilder.Entity("EbookPlatform.Language", b =>
@@ -509,7 +509,7 @@ namespace EbookPlatform.DataLayer.Migrations
 
                     b.HasKey("languageID");
 
-                    b.ToTable("languages");
+                    b.ToTable("languages", (string)null);
                 });
 
             modelBuilder.Entity("EbookPlatform.Library", b =>
@@ -528,7 +528,7 @@ namespace EbookPlatform.DataLayer.Migrations
                     b.HasIndex("userID")
                         .IsUnique();
 
-                    b.ToTable("libraries");
+                    b.ToTable("libraries", (string)null);
                 });
 
             modelBuilder.Entity("EbookPlatform.Publisher", b =>
@@ -554,7 +554,7 @@ namespace EbookPlatform.DataLayer.Migrations
 
                     b.HasKey("publisherID");
 
-                    b.ToTable("publishers");
+                    b.ToTable("publishers", (string)null);
                 });
 
             modelBuilder.Entity("EbookPlatform.Rating", b =>
@@ -580,7 +580,7 @@ namespace EbookPlatform.DataLayer.Migrations
 
                     b.HasIndex("userID");
 
-                    b.ToTable("ratings");
+                    b.ToTable("ratings", (string)null);
                 });
 
             modelBuilder.Entity("EbookPlatform.Shelf", b =>
@@ -603,7 +603,7 @@ namespace EbookPlatform.DataLayer.Migrations
 
                     b.HasIndex("libraryID");
 
-                    b.ToTable("shelves");
+                    b.ToTable("shelves", (string)null);
                 });
 
             modelBuilder.Entity("EbookPlatform.SubCategory", b =>
@@ -628,7 +628,7 @@ namespace EbookPlatform.DataLayer.Migrations
 
                     b.HasKey("subCategoryID");
 
-                    b.ToTable("subCategories");
+                    b.ToTable("subCategories", (string)null);
                 });
 
             modelBuilder.Entity("EbookPlatform.SubComment", b =>
@@ -662,7 +662,7 @@ namespace EbookPlatform.DataLayer.Migrations
 
                     b.HasIndex("userID");
 
-                    b.ToTable("subComments");
+                    b.ToTable("subComments", (string)null);
                 });
 
             modelBuilder.Entity("EbookPlatform.Translator", b =>
@@ -687,7 +687,7 @@ namespace EbookPlatform.DataLayer.Migrations
 
                     b.HasKey("translatorID");
 
-                    b.ToTable("translators");
+                    b.ToTable("translators", (string)null);
                 });
 
             modelBuilder.Entity("EbookPlatform.User", b =>
@@ -738,7 +738,7 @@ namespace EbookPlatform.DataLayer.Migrations
 
                     b.HasKey("userID");
 
-                    b.ToTable("users");
+                    b.ToTable("users", (string)null);
                 });
 
             modelBuilder.Entity("EbookPlatform.AdminUser", b =>

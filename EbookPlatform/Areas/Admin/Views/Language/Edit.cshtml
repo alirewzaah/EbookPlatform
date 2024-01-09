@@ -1,0 +1,38 @@
+﻿@model EbookPlatform.Language
+
+@{
+    ViewData["Title"] = "EditLanguage";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-lg-12 mt-4 p-3">
+    <div class="card-box">
+
+
+
+        <form method="post" asp-area="Admin" asp-controller="Language" asp-action="Edit" style="margin-top:5%;">
+            <div class="form-group">
+                <label>عنوان زبان</label>
+                <input type="text" class="form-control" name="languageTitle" value="@Model.languageTitle">
+                <span class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label>توضیحات</label>
+                <input type="text" class="form-control" name="languageDescription" value="@Model.languageDescription">
+                <span class="text-danger"></span>
+            </div>
+
+            <div class="form-group text-right m-b-0">
+                <button class="btn btn-primary waves-effect waves-light" type="submit">
+                    ثبت اطلاعات
+                </button>
+                <a asp-action="Index" class="btn btn-default waves-effect waves-light m-l-5">
+                    لغو
+                </a>
+            </div>
+
+        </form>
+    </div>
+</div>
+

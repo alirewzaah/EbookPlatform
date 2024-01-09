@@ -1,0 +1,38 @@
+﻿@model EbookPlatform.Translator
+
+@{
+    ViewData["Title"] = "AddTranslator";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="col-lg-12 mt-4 p-3">
+    <div class="card-box">
+
+
+
+        <form method="post" asp-area="Admin" asp-controller="Translators" asp-action="Create" style="margin-top:5%;">
+            <div class="form-group">
+                <label asp-for="translatorFullName"></label>
+                <input asp-for="translatorFullName" type="text" parsley-trigger="change" class="form-control" data-parsley-id="6">
+                <span asp-validation-for="translatorFullName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="description"></label>
+                <input asp-for="description" type="text" class="form-control">
+                <span asp-validation-for="description" class="text-danger"></span>
+            </div>
+
+            <div class="form-group text-right m-b-0">
+                <button class="btn btn-primary waves-effect waves-light" type="submit">
+                    ثبت اطلاعات
+                </button>
+                <a asp-action="Index" class="btn btn-default waves-effect waves-light m-l-5">
+                    لغو
+                </a>
+            </div>
+
+        </form>
+    </div>
+</div>
+
