@@ -24,6 +24,11 @@ internal class Program
             
         });
         builder.Services.AddTransient<ICategoryService, CategoryService>();
+        builder.Services.AddTransient<IBookService, BookService>();
+        builder.Services.AddTransient<ILanguageService, LanguageService>();
+        builder.Services.AddTransient<IPublisherService, PublisherService>();
+        builder.Services.AddTransient<ITranslatorService, TranslatorService>();
+        builder.Services.AddTransient<IAuthorService, AuthorService>();
         var app = builder.Build();
         app.UseRouting();
         app.UseStaticFiles();

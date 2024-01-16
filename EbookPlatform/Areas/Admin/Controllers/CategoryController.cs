@@ -17,7 +17,7 @@ namespace EbookPlatform.Areas.Admin.Controllers
             return View(_categoryService.ShowAllCategory());
         }
         [HttpGet]
-        public IActionResult AddCategory(int id)
+        public IActionResult AddCategory(int? id)
         {
             ViewBag.id = id;
             return View();
@@ -51,6 +51,46 @@ namespace EbookPlatform.Areas.Admin.Controllers
         {
             ViewBag.id = id;
             return View(_categoryService.ShowAllSubCategory(id));
+        }
+
+
+        [HttpGet]
+        public IActionResult DeleteCategory(int id)
+        {
+            Category target=_categoryService.FindCategoryByID(id);
+            target.isDeleted = true;
+            _categoryService.DeleteCategory(target);
+
+            return RedirectToAction(nameof(ShowAllCategory));
+        }
+
+        [HttpGet]
+        public IActionResult UpdateCategory(int id)
+        {
+            //ViewBag.id = id;
+       
+            Category target = _categoryService.FindCategoryByID(id);
+       
+            return View(target);
+        }
+        [HttpPost]
+        public IActionResult UpdateCategory(Category category)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(category);
+            }
+            /*
+            if (_categoryService.doesExist(category.title, 0))
+            {
+                ModelState.AddModelError("title", "daste banduy tekrari ast!!!!!");
+                return View(category);
+            }
+            */
+            bool res = _categoryService.UpdateCategory(category);
+            TempData["Result"] = res ? "true" : "false";
+            return RedirectToAction(nameof(ShowAllCategory));
+
         }
     }
 }

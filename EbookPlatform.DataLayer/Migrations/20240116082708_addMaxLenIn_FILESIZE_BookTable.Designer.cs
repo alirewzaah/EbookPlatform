@@ -4,6 +4,7 @@ using EbookPlatform;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EbookPlatform.DataLayer.Migrations
 {
     [DbContext(typeof(MyEbookPlatformContext))]
-    partial class MyEbookPlatformContextModelSnapshot : ModelSnapshot
+    [Migration("20240116082708_addMaxLenIn_FILESIZE_BookTable")]
+    partial class addMaxLenIn_FILESIZE_BookTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

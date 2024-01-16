@@ -10,7 +10,7 @@
         </a>
     </li>
 
-    @foreach (var item1 in Model.Where(c => c.parentID == null))
+    @foreach (var item1 in Model.Where(c => c.parentID == null&&c.isDeleted==false))
     {
         <li id="nav-menu-item" class="menu-item nav-overlay">
             <a href="#" class="current-link-menu">
@@ -18,14 +18,14 @@
             </a>
 
             <ul class="sub-menu is-mega-menu mega-menu-level-two">
-                @foreach (var item2 in Model.Where(c => c.parentID == item1.categoryID))
+                @foreach (var item2 in Model.Where(c => c.parentID == item1.categoryID && c.isDeleted == false))
                 {
                     <li class="menu-mega-item menu-item-type-mega-menu">
                         <a href="#" class="mega-menu-link">
                             @item2.title
                         </a>
                         <ul class="sub-menu mega-menu-level-three">
-                            @foreach (var subItem in Model.Where(x => x.parentID == item2.categoryID))
+                            @foreach (var subItem in Model.Where(x => x.parentID == item2.categoryID && x.isDeleted == false))
                             {
                                 <li class="menu-mega-item-three">
                                     <a href="#">

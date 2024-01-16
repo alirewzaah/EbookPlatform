@@ -1,0 +1,235 @@
+﻿@model EbookPlatform.Book
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+<!-- Start content -->
+<div class="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card-box">
+                    <div class="dropdown pull-right">
+                        <a href="#" class="dropdown-toggle card-drop" data-toggle="dropdown" aria-expanded="false">
+                            <i class="zmdi zmdi-more-vert"></i>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">فعا</a></li>
+                            <li><a href="#">متن اول</a></li>
+                            <li><a href="#">متن دوم</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">متن پاورقی</a></li>
+                        </ul>
+                    </div>
+
+                    <h4 class="header-title m-t-0 m-b-30">نمونه اول</h4>
+
+                    <form asp-action="UpdateBook" method="post" data-parsley-validate novalidate enctype="multipart/form-data">
+                        <input type="hidden" asp-for="bookID"/>
+                        <input type="hidden" asp-for="productCreated" />
+                        <div class="form-group">
+                            <label asp-for="bookTitle" for="emailAddress">عنوان</label>
+                            <input asp-for="bookTitle" type="text" parsley-trigger="change" required
+                                   placeholder="هنوان کتاب را وارد کنید" class="form-control" id="emailAddress">
+                            <span asp-validation-for="bookTitle" class="text-danger"></span>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label asp-for="price" for="emailAddress">قیمت</label>
+                            <input asp-for="price" type="text" parsley-trigger="change" required
+                                   placeholder="قیمت کتاب را وارد کنید" class="form-control" id="emailAddress">
+                            <span asp-validation-for="price" class="text-danger"></span>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="discount">تفیف</label>
+                            <input id="chckTakhfif" type="checkbox" checked data-plugin="switchery" data-color="#4c5667" data-size="large" onchange="EnableDisableTextBox(this)" onclick="" />
+
+                            <div class="form-group">
+                                <label asp-for="discountPercentage" for="userName">میزان تخفیف</label>
+                                <input asp-for="discountPercentage" type="text" parsley-trigger="change" required
+                                       placeholder="میزان تخفیف" class="form-control" id="mTakhfif"
+                                       disabled="disabled">
+                                <span asp-validation-for="discountPercentage" class="text-danger"></span>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label asp-for="pageCount" for="pass1">تعداد صفحات</label>
+                            <input asp-for="pageCount" id="pass1" type="number" placeholder="تعداد صفحات" required
+                                   class="form-control">
+                            <span asp-validation-for="pageCount" class="text-danger"></span>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <label asp-for="salesCount" for="passWord2">تعداد فروش</label>
+                            <input asp-for="salesCount" data-parsley-equalto="#pass1" type="number" required
+                                   placeholder="تعداد فروش" class="form-control" id="passWord2">
+                            <span asp-validation-for="salesCount" class="text-danger"></span>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label asp-for="engTitle" for="passWord2">عنوان لاتین</label>
+                            <input asp-for="engTitle" data-parsley-equalto="#pass1" type="text" required
+                                   placeholder="عنوان لاتین" class="form-control" id="passWord2">
+                            <span asp-validation-for="engTitle" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="releaseDate" for="datepicker"> تاریخ نشر</label>
+                            <div>
+                                <div class="input-group">
+                                    <input asp-for="releaseDate" type="text" class="form-control" placeholder="mm/dd/yyyy" id="datepicker">
+                                    <span class="input-group-addon bg-primary b-0 text-white"><i class="ti-calendar"></i></span>
+                                </div><!-- input-group -->
+                            </div>
+                            <span asp-validation-for="releaseDate" class="text-danger"></span>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label asp-for="physicalVersionPrice" for="finalver">قیمت نسخه چاپی</label>
+                            <input asp-for="physicalVersionPrice" data-parsley-equalto="#pass1" type="number" required
+                                   placeholder="قیمت نسخه چاپی" class="form-control" id="finalver">
+                            <span asp-validation-for="physicalVersionPrice" class="text-danger"></span>
+                        </div>
+
+
+
+
+                        <div class="form-group">
+                            <label asp-for="categoryID">cateogory</label>
+                            <select class="form-control" asp-for="categoryID" asp-items="@(new SelectList(ViewBag.category,"categoryID","title"))">
+                                <option value="">انتخاب کنید</option>
+                            </select>
+
+
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="authorID">نویسنده</label>
+                            <select class="form-control" asp-for="authorID" asp-items="@(new SelectList(ViewBag.authors,"authorID","authorFullName"))">
+                                <option value="">انتخاب کنید</option>
+                            </select>
+
+
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="translatorID">مترجم</label>
+                            <select class="form-control" asp-for="translatorID" asp-items="@(new SelectList(ViewBag.translators,"translatorID","translatorFullName"))">
+                                <option value="">انتخاب کنید</option>
+                            </select>
+
+
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="publisherID">ناشر</label>
+                            <select class="form-control" asp-for="publisherID" asp-items="@(new SelectList(ViewBag.publishers,"publisherID","publisherFullName"))">
+                                <option value="">انتخاب کنید</option>
+                            </select>
+
+
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="languageID">زبان</label>
+                            <select class="form-control" asp-for="languageID" asp-items="@(new SelectList(ViewBag.languages,"languageID","languageTitle"))">
+                                <option value="">انتخاب کنید</option>
+                            </select>
+
+
+                        </div>
+
+
+
+
+                        <div class="form-group">
+                            <label for="motarjem">تصویر کتاب</label>
+                            <input type="file" name="picfile" class="dropify" data-default-file="~/CssSite/SiteImages/@Model.image" />
+                            <input type="hidden" asp-for="image"/>
+                            <input type="image" src="~/CssSite/SiteImages/@Model.image" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="motarjem">فایل کتاب</label>
+                            <input type="file" name="efile" class="dropify" data-max-file-size="5M" data-default-file="~/CssSite/SiteFiles/@Model.bookEFile" />
+                            <input type="hidden" asp-for="bookEFile" />
+                        </div>
+
+
+                        <div class="form-group">
+                            <label asp-for="longDescription" for="motarjem">درباره کتاب</label>
+                            <textarea asp-for="longDescription" id="elm1"></textarea>
+                            <span asp-validation-for="longDescription" class="text-danger"></span>
+                        </div>
+
+
+
+
+                        <div class="checkbox checkbox-custom">
+                            <input id="checkbox10" type="checkbox" asp-for="isActive">
+                            <label for="checkbox10">
+                                آیا کتاب فعال و قابل نمایش باشد ؟
+                            </label>
+                        </div>
+
+
+                        <div class="form-group text-right m-b-0">
+                            <button class="btn btn-primary waves-effect waves-light" type="submit">
+                                ثبت
+                            </button>
+                            <button type="reset" class="btn btn-default waves-effect waves-light m-l-5">
+                                لغو
+                            </button>
+                        </div>
+
+                    </form>
+                </div>
+            </div><!-- end col -->
+
+
+        </div>
+
+    </div>
+
+
+
+</div>
+
+
+
+
+
+@section Scripts {
+    <script src="/AdminPanel/assets/plugins/switchery/switchery.min.js"></script>
+    <script>
+        // Date Picker
+        jQuery('#datepicker').datepicker();
+        jQuery('#datepicker-autoclose').datepicker({
+            autoclose: true,
+            todayHighlight: true
+        });
+        jQuery('#datepicker-inline').datepicker();
+        jQuery('#datepicker-multiple-date').datepicker({
+            format: "mm/dd/yyyy",
+            clearBtn: true,
+            multidate: true,
+            multidateSeparator: ","
+        });
+        jQuery('#date-range').datepicker({
+            toggleActive: true
+        });
+    </script>
+}
+
+
+
+

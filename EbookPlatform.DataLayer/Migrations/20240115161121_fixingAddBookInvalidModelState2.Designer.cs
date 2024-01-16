@@ -4,6 +4,7 @@ using EbookPlatform;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EbookPlatform.DataLayer.Migrations
 {
     [DbContext(typeof(MyEbookPlatformContext))]
-    partial class MyEbookPlatformContextModelSnapshot : ModelSnapshot
+    [Migration("20240115161121_fixingAddBookInvalidModelState2")]
+    partial class fixingAddBookInvalidModelState2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -125,8 +127,8 @@ namespace EbookPlatform.DataLayer.Migrations
                         .HasColumnType("nvarchar(10)");
 
                     b.Property<string>("fileSize")
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
 
                     b.Property<string>("image")
                         .HasColumnType("nvarchar(max)");

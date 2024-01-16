@@ -14,16 +14,16 @@ namespace EbookPlatform
         [Key]
         public int bookCategoryID { get; set; }
 
-        public int bookID { get; set; }
+       // public int bookID { get; set; }
 
         public int categoryID { get; set; }
 
      //relations
-        [ForeignKey("categoryID")]
-        public Category Category { get; set; }
+      //  [ForeignKey("categoryID")]
+     //   public Category Category { get; set; }
 
-        [ForeignKey("bookID")]
-        public Book book { get; set; }
+       // [ForeignKey("bookID")]
+        //public Book book { get; set; }
         public BookCategory()
         {
             

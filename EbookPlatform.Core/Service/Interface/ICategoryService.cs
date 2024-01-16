@@ -17,5 +17,6 @@ namespace EbookPlatform.Core.Service.Interface
         List<Category> ShowAllSubCategory(int categoryID);
         Category FindCategoryByID(int categoryID);
         public bool doesExist(string title, int catid);
+        public List<Category> Showsubcategory();
     }
 }

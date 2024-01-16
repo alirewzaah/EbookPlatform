@@ -4,6 +4,7 @@ using EbookPlatform;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EbookPlatform.DataLayer.Migrations
 {
     [DbContext(typeof(MyEbookPlatformContext))]
-    partial class MyEbookPlatformContextModelSnapshot : ModelSnapshot
+    [Migration("20240115155139_fixingAddBookInvalidModelState")]
+    partial class fixingAddBookInvalidModelState
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -102,6 +104,7 @@ namespace EbookPlatform.DataLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("bookEFile")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("bookTitle")
@@ -121,14 +124,17 @@ namespace EbookPlatform.DataLayer.Migrations
                         .HasColumnType("nvarchar(150)");
 
                     b.Property<string>("fileFormat")
+                        .IsRequired()
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
 
                     b.Property<string>("fileSize")
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
 
                     b.Property<string>("image")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("isActive")

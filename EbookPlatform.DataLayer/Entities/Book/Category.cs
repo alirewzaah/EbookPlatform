@@ -32,8 +32,8 @@ namespace EbookPlatform
         [ForeignKey("parentID")]
         public virtual Category? category { get; set; }
         public virtual List<Category>? children { get; set; }
-        //public virtual List<Book>? books{ get; set; }
-        public virtual List<BookCategory>? books { get; set; }   
+        public virtual List<Book>? books{ get; set; }
+        //public virtual List<BookCategory>? books { get; set; }   
        
       //  public virtual List<SubCategory> SubCategories { get; set; }
         public Category() { }   

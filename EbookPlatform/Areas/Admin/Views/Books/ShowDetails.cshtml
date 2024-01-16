@@ -12,7 +12,7 @@
 <div class="content">
     <div class="container">
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-12">
                 <div class="card-box">
                     <div class="dropdown pull-right">
                         <a href="#" class="dropdown-toggle card-drop" data-toggle="dropdown" aria-expanded="false">
@@ -61,6 +61,17 @@
 
 
                         </div>
+
+
+
+                        <div class="form-group">
+                            <select >
+                                <option value="">انتخاب کنید</option>
+                            </select>
+
+
+                        </div>
+
                         <div class="form-group">
                             <label for="pass1">تعداد صفحات</label>
                             <input id="pass1" type="number" placeholder="تعداد صفحات" required
@@ -112,6 +123,18 @@
                             <input data-parsley-equalto="#pass1" type="text" required
                                    placeholder="زبان" class="form-control" id="motarjem">
                         </div>
+                        <div class="form-group">
+                            <label for="motarjem">تصویر کتاب</label>
+                            <input type="file" class="dropify" data-default-file="assets/images/gallery/1.jpg" />
+                        </div>
+                        <div class="form-group">
+                            <label for="motarjem">فایل کتاب</label>
+                            <input type="file" class="dropify" data-max-file-size="1M" />
+                        </div>
+                        <div class="form-group">
+                            <label for="motarjem">درباره کتاب</label>
+                            <textarea id="elm1" name="area"></textarea>
+                        </div>
 
 
                         <div class="form-group text-right m-b-0">
@@ -128,60 +151,6 @@
             </div><!-- end col -->
 
 
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="card-box">
-
-                        <div class="dropdown pull-right">
-                            <a href="#" class="dropdown-toggle card-drop" data-toggle="dropdown" aria-expanded="false">
-                                <i class="zmdi zmdi-more-vert"></i>
-                            </a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">فعال</a></li>
-                                <li><a href="#">متن اول</a></li>
-                                <li><a href="#">متن دوم</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">متن پاورقی</a></li>
-                            </ul>
-                        </div>
-
-                        <h4 class="header-title m-t-0 m-b-30">تصویر کتاب</h4>
-
-                        <input type="file" class="dropify" data-default-file="assets/images/gallery/1.jpg" />
-                    </div>
-                    <div class="card-box">
-
-                        <div class="dropdown pull-right">
-                            <a href="#" class="dropdown-toggle card-drop" data-toggle="dropdown" aria-expanded="false">
-                                <i class="zmdi zmdi-more-vert"></i>
-                            </a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">فعال</a></li>
-                                <li><a href="#">متن اول</a></li>
-                                <li><a href="#">متن دوم</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">متن پاورقی</a></li>
-                            </ul>
-                        </div>
-
-                        <h4 class="header-title m-t-0 m-b-30">فایل کتاب</h4>
-
-                        <input type="file" class="dropify" data-max-file-size="1M" />
-                    </div>
-                    <div class="col-sm-12">
-                        <div class="card-box">
-                            <form method="post">
-                                <h4 class="header-title m-t-0 m-b-30">توضیحات</h4>
-                                <textarea id="elm1" name="area"></textarea>
-                            </form>
-                        </div>
-                    </div>
-
-
-
-
-                </div><!-- end col -->
-            </div>
         </div>
 
     </div>

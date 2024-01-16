@@ -1,4 +1,5 @@
 ﻿using EbookPlatform.Core.Service.Interface;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
@@ -78,6 +79,11 @@ namespace EbookPlatform.Core.Service
         public bool doesExist(string title, int catid)
         {
             return _context.categories.Any(c => c.title == title && c.categoryID != catid);
+        }
+
+        public List<Category> Showsubcategory()
+        {
+            return _context.categories.Where(c => c.parentID != null).ToList();
         }
     }
 }

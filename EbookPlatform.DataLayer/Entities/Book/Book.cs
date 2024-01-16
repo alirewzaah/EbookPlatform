@@ -35,12 +35,11 @@ namespace EbookPlatform
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         public string longDescription { get; set; }
         [Display(Name = "عکس")]
-        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
-        public string image { get; set; }
+        public string? image { get; set; }
         [MaxLength(10)]
-        public string fileFormat { get; set; }
-        [MaxLength(10)]
-        public string fileSize { get; set; }
+        public string? fileFormat { get; set; }
+        [MaxLength(20)]
+        public string? fileSize { get; set; }
         [Display(Name = "تعداد صفحات")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         public int pageCount { get; set; }
@@ -57,25 +56,24 @@ namespace EbookPlatform
         [Display(Name = "قیمت نسخه چاپی")]
         public float? physicalVersionPrice { get; set; }
         [Display(Name = "فایل کتاب")]
-        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
-        public string bookEFile { get; set; }
+        public string? bookEFile { get; set; }
 
 
 
         //relations
         public virtual List<Comment>? comments { get; set; }
         public int authorID { get; set; }
-        public virtual Author author { get; set; }
+        public virtual Author? author { get; set; }
         public int translatorID{ get; set; }
-        public virtual Translator  translator { get; set; }
+        public virtual Translator?  translator { get; set; }
         public int publisherID { get; set; }
-        public virtual Publisher publisher { get; set; }
+        public virtual Publisher? publisher { get; set; }
         public int languageID { get; set; }
-        public virtual Language language { get; set; }
-        public List<Rating> ratings { get; set; }
-        public virtual List<BookCategory>? bookCategories { get; set; }  
-        //public int categoryID { get; set; }
-        //public virtual Category category { get; set; }
+        public virtual Language? language { get; set; }
+        public List<Rating>? ratings { get; set; }
+        //public virtual List<BookCategory>? bookCategories { get; set; }  
+        public int categoryID { get; set; }
+        public virtual Category? category { get; set; }
 
 
 

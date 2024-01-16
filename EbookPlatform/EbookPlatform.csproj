@@ -11,7 +11,7 @@
     <Folder Include="wwwroot\CssSite\assets\images\menu-main\card\" />
     <Folder Include="wwwroot\CssSite\Css\" />
     <Folder Include="wwwroot\CssSite\Js\" />
-    <Folder Include="wwwroot\CssSite\SiteImages\" />
+    <Folder Include="wwwroot\CssSite\SiteFiles\" />
     <Folder Include="wwwroot\CssSite\UserImages\" />
   </ItemGroup>
 
