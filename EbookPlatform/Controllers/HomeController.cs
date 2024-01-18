@@ -1,7 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using EbookPlatform.Core.Security;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace EbookPlatform.Controllers
 {
+  
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -11,7 +14,7 @@ namespace EbookPlatform.Controllers
             _logger = logger;
             _context = context;
         }
-
+      
         public IActionResult Index()
         {
             var category = _context.categories.ToList();

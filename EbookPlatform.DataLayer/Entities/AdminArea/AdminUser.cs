@@ -1,4 +1,4 @@
-﻿using EbookPlatform.DataLayer.Entities.AdminArea.Role;
+﻿
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -28,8 +28,8 @@ namespace EbookPlatform
 
 
         //realtions
-        public int roleID { get; set; }
-        public virtual Role role { get; set; }
+       // public int roleID { get; set; }
+       // public virtual Role role { get; set; }
         public AdminUser()
         {
                 

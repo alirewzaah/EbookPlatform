@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EbookPlatform.DataLayer.Entities.AdminArea.Role
+namespace EbookPlatform
 {
     public class Role
     {
@@ -17,12 +17,12 @@ namespace EbookPlatform.DataLayer.Entities.AdminArea.Role
 
         #region Relation
         public virtual List<RolePermission> rolePermissions { get; set; }
-        public virtual List<AdminUser> adminUsers { get; set; }
-        public Role()
-        {
-
-        }
+        public virtual List<UserRole> UserRoles { get; set; }
         #endregion
 
+        public Role() 
+        {
+                
+        }
     }
 }

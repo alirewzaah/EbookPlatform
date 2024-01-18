@@ -14,24 +14,23 @@ namespace EbookPlatform
         public int userID { get; set; }
         [MaxLength(150)]
         [Display(Name = "نام")]
-        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
-        public string firstName { get; set; }
+        public string? firstName { get; set; }
         [MaxLength(150)]
         [Display(Name = " نام خانوادگی")]
+        public string? lastName { get; set; }
+        [MaxLength(150)]
+        [Display(Name = "نام کاربری")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
-        public string lastName { get; set; }
+        public string UserName { get; set; }
 
         [Display(Name = "تاریخ تولد")]
-        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
-        public DateTime birthDate { get; set; }
+        public DateTime? birthDate { get; set; }
 
         [Display(Name = "کد ملی")]
-        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
-        public int Ssn { get; set; }
+        public int? Ssn { get; set; }
 
         [Display(Name = "شماره تلفن")]
-        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
-        public int phoneNumber { get; set; }
+        public int? phoneNumber { get; set; }
         [MaxLength(200)]
         [Display(Name = "ایمیل")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
@@ -42,11 +41,11 @@ namespace EbookPlatform
         public string password { get; set; }
 
         [Display(Name = "جنسیت")]
-        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
-        public bool Sex { get; set; }
+        public bool? Sex { get; set; }
         public bool isActive{ get; set; }
         public bool isDeleted { get; set; }
-
+        public DateTime DateCreated { get; set; }
+        public string ActiveCode { get; set; }
 
 
 
@@ -57,7 +56,7 @@ namespace EbookPlatform
         public virtual List<SubComment>? subComments { get; set; }
         public virtual List<Rating> ratings { get; set; }
         public virtual List<Favorite> favorites { get; set; }
-       // public virtual List<UserRole> userRoles { get; set; }
+        public virtual List<UserRole> userRoles { get; set; }
        // public int libraryID { get; set; }
         public Library library { get; set; }
         public User()

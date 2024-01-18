@@ -22,49 +22,6 @@ namespace EbookPlatform.DataLayer.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("EbookPlatform.AdminUser", b =>
-                {
-                    b.Property<int>("adminUserID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("adminUserID"), 1L, 1);
-
-                    b.Property<string>("adminUserEmail")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<string>("adminUserName")
-                        .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("nvarchar(150)");
-
-                    b.Property<string>("adminUserPassword")
-                        .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("nvarchar(150)");
-
-                    b.Property<int>("roleID")
-                        .HasColumnType("int");
-
-                    b.HasKey("adminUserID");
-
-                    b.HasIndex("roleID");
-
-                    b.ToTable("adminUsers");
-
-                    b.HasData(
-                        new
-                        {
-                            adminUserID = 1,
-                            adminUserEmail = "admin@admin.ir",
-                            adminUserName = "admin",
-                            adminUserPassword = "admin",
-                            roleID = 1
-                        });
-                });
-
             modelBuilder.Entity("EbookPlatform.Author", b =>
                 {
                     b.Property<int>("authorID")
@@ -337,129 +294,6 @@ namespace EbookPlatform.DataLayer.Migrations
                     b.ToTable("comments");
                 });
 
-            modelBuilder.Entity("EbookPlatform.DataLayer.Entities.AdminArea.Role.Permission", b =>
-                {
-                    b.Property<int>("permissionID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("permissionID"), 1L, 1);
-
-                    b.Property<string>("permissionTitle")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("permissionID");
-
-                    b.ToTable("permissions");
-
-                    b.HasData(
-                        new
-                        {
-                            permissionID = 1,
-                            permissionTitle = "ContentManager"
-                        },
-                        new
-                        {
-                            permissionID = 2,
-                            permissionTitle = "UserManager"
-                        },
-                        new
-                        {
-                            permissionID = 3,
-                            permissionTitle = "AdminUserManager"
-                        },
-                        new
-                        {
-                            permissionID = 4,
-                            permissionTitle = "CommentsManager"
-                        },
-                        new
-                        {
-                            permissionID = 5,
-                            permissionTitle = "ReportsManager"
-                        });
-                });
-
-            modelBuilder.Entity("EbookPlatform.DataLayer.Entities.AdminArea.Role.Role", b =>
-                {
-                    b.Property<int>("roleID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("roleID"), 1L, 1);
-
-                    b.Property<string>("roleTitle")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("roleID");
-
-                    b.ToTable("roles");
-
-                    b.HasData(
-                        new
-                        {
-                            roleID = 1,
-                            roleTitle = "sa"
-                        });
-                });
-
-            modelBuilder.Entity("EbookPlatform.DataLayer.Entities.AdminArea.Role.RolePermission", b =>
-                {
-                    b.Property<int>("rolePermissionID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("rolePermissionID"), 1L, 1);
-
-                    b.Property<int>("permissionid")
-                        .HasColumnType("int");
-
-                    b.Property<int>("roleid")
-                        .HasColumnType("int");
-
-                    b.HasKey("rolePermissionID");
-
-                    b.HasIndex("permissionid");
-
-                    b.HasIndex("roleid");
-
-                    b.ToTable("rolePermissions");
-
-                    b.HasData(
-                        new
-                        {
-                            rolePermissionID = 1,
-                            permissionid = 1,
-                            roleid = 1
-                        },
-                        new
-                        {
-                            rolePermissionID = 2,
-                            permissionid = 2,
-                            roleid = 1
-                        },
-                        new
-                        {
-                            rolePermissionID = 3,
-                            permissionid = 3,
-                            roleid = 1
-                        },
-                        new
-                        {
-                            rolePermissionID = 4,
-                            permissionid = 4,
-                            roleid = 1
-                        },
-                        new
-                        {
-                            rolePermissionID = 5,
-                            permissionid = 5,
-                            roleid = 1
-                        });
-                });
-
             modelBuilder.Entity("EbookPlatform.Favorite", b =>
                 {
                     b.Property<int>("favoriteID")
@@ -525,6 +359,23 @@ namespace EbookPlatform.DataLayer.Migrations
                     b.ToTable("libraries");
                 });
 
+            modelBuilder.Entity("EbookPlatform.Permission", b =>
+                {
+                    b.Property<int>("permissionID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("permissionID"), 1L, 1);
+
+                    b.Property<string>("permissionTitle")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("permissionID");
+
+                    b.ToTable("permissions");
+                });
+
             modelBuilder.Entity("EbookPlatform.Publisher", b =>
                 {
                     b.Property<int>("publisherID")
@@ -575,6 +426,46 @@ namespace EbookPlatform.DataLayer.Migrations
                     b.HasIndex("userID");
 
                     b.ToTable("ratings");
+                });
+
+            modelBuilder.Entity("EbookPlatform.Role", b =>
+                {
+                    b.Property<int>("roleID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("roleID"), 1L, 1);
+
+                    b.Property<string>("roleTitle")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("roleID");
+
+                    b.ToTable("roles");
+                });
+
+            modelBuilder.Entity("EbookPlatform.RolePermission", b =>
+                {
+                    b.Property<int>("rolePermissionID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("rolePermissionID"), 1L, 1);
+
+                    b.Property<int>("permissionID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("roleID")
+                        .HasColumnType("int");
+
+                    b.HasKey("rolePermissionID");
+
+                    b.HasIndex("permissionID");
+
+                    b.HasIndex("roleID");
+
+                    b.ToTable("rolePermissions");
                 });
 
             modelBuilder.Entity("EbookPlatform.Shelf", b =>
@@ -692,13 +583,25 @@ namespace EbookPlatform.DataLayer.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("userID"), 1L, 1);
 
-                    b.Property<bool>("Sex")
+                    b.Property<string>("ActiveCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DateCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool?>("Sex")
                         .HasColumnType("bit");
 
-                    b.Property<int>("Ssn")
+                    b.Property<int?>("Ssn")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("birthDate")
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.Property<DateTime?>("birthDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("email")
@@ -707,7 +610,6 @@ namespace EbookPlatform.DataLayer.Migrations
                         .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("firstName")
-                        .IsRequired()
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
 
@@ -718,7 +620,6 @@ namespace EbookPlatform.DataLayer.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("lastName")
-                        .IsRequired()
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
 
@@ -727,7 +628,7 @@ namespace EbookPlatform.DataLayer.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int>("phoneNumber")
+                    b.Property<int?>("phoneNumber")
                         .HasColumnType("int");
 
                     b.HasKey("userID");
@@ -735,15 +636,27 @@ namespace EbookPlatform.DataLayer.Migrations
                     b.ToTable("users");
                 });
 
-            modelBuilder.Entity("EbookPlatform.AdminUser", b =>
+            modelBuilder.Entity("EbookPlatform.UserRole", b =>
                 {
-                    b.HasOne("EbookPlatform.DataLayer.Entities.AdminArea.Role.Role", "role")
-                        .WithMany("adminUsers")
-                        .HasForeignKey("roleID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Property<int>("userRoleID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
 
-                    b.Navigation("role");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("userRoleID"), 1L, 1);
+
+                    b.Property<int>("roleID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("userID")
+                        .HasColumnType("int");
+
+                    b.HasKey("userRoleID");
+
+                    b.HasIndex("roleID");
+
+                    b.HasIndex("userID");
+
+                    b.ToTable("userRoles");
                 });
 
             modelBuilder.Entity("EbookPlatform.Book", b =>
@@ -751,25 +664,25 @@ namespace EbookPlatform.DataLayer.Migrations
                     b.HasOne("EbookPlatform.Author", "author")
                         .WithMany("books")
                         .HasForeignKey("authorID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("EbookPlatform.Category", "category")
                         .WithMany("books")
                         .HasForeignKey("categoryID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("EbookPlatform.Language", "language")
                         .WithMany("books")
                         .HasForeignKey("languageID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("EbookPlatform.Publisher", "publisher")
                         .WithMany("books")
                         .HasForeignKey("publisherID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("EbookPlatform.Shelf", null)
@@ -779,7 +692,7 @@ namespace EbookPlatform.DataLayer.Migrations
                     b.HasOne("EbookPlatform.Translator", "translator")
                         .WithMany("books")
                         .HasForeignKey("translatorID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("author");
@@ -798,7 +711,7 @@ namespace EbookPlatform.DataLayer.Migrations
                     b.HasOne("EbookPlatform.User", "user")
                         .WithMany()
                         .HasForeignKey("userID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("user");
@@ -809,13 +722,13 @@ namespace EbookPlatform.DataLayer.Migrations
                     b.HasOne("EbookPlatform.Book", "book")
                         .WithMany()
                         .HasForeignKey("bookID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("EbookPlatform.Cart", "cart")
                         .WithMany("cartItems")
                         .HasForeignKey("cartID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("book");
@@ -837,35 +750,16 @@ namespace EbookPlatform.DataLayer.Migrations
                     b.HasOne("EbookPlatform.Book", null)
                         .WithMany("comments")
                         .HasForeignKey("bookID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("EbookPlatform.User", "user")
                         .WithMany("comments")
                         .HasForeignKey("userID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("user");
-                });
-
-            modelBuilder.Entity("EbookPlatform.DataLayer.Entities.AdminArea.Role.RolePermission", b =>
-                {
-                    b.HasOne("EbookPlatform.DataLayer.Entities.AdminArea.Role.Permission", "permission")
-                        .WithMany("rolePermissions")
-                        .HasForeignKey("permissionid")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("EbookPlatform.DataLayer.Entities.AdminArea.Role.Role", "role")
-                        .WithMany("rolePermissions")
-                        .HasForeignKey("roleid")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("permission");
-
-                    b.Navigation("role");
                 });
 
             modelBuilder.Entity("EbookPlatform.Favorite", b =>
@@ -873,7 +767,7 @@ namespace EbookPlatform.DataLayer.Migrations
                     b.HasOne("EbookPlatform.User", "User")
                         .WithMany("favorites")
                         .HasForeignKey("userID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("User");
@@ -884,7 +778,7 @@ namespace EbookPlatform.DataLayer.Migrations
                     b.HasOne("EbookPlatform.User", "user")
                         .WithOne("library")
                         .HasForeignKey("EbookPlatform.Library", "userID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("user");
@@ -895,13 +789,13 @@ namespace EbookPlatform.DataLayer.Migrations
                     b.HasOne("EbookPlatform.Book", "book")
                         .WithMany("ratings")
                         .HasForeignKey("bookID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("EbookPlatform.User", "user")
                         .WithMany("ratings")
                         .HasForeignKey("userID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("book");
@@ -909,12 +803,31 @@ namespace EbookPlatform.DataLayer.Migrations
                     b.Navigation("user");
                 });
 
+            modelBuilder.Entity("EbookPlatform.RolePermission", b =>
+                {
+                    b.HasOne("EbookPlatform.Permission", "permission")
+                        .WithMany("rolePermissions")
+                        .HasForeignKey("permissionID")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("EbookPlatform.Role", "role")
+                        .WithMany("rolePermissions")
+                        .HasForeignKey("roleID")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("permission");
+
+                    b.Navigation("role");
+                });
+
             modelBuilder.Entity("EbookPlatform.Shelf", b =>
                 {
                     b.HasOne("EbookPlatform.Library", null)
                         .WithMany("Shelves")
                         .HasForeignKey("libraryID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -923,16 +836,35 @@ namespace EbookPlatform.DataLayer.Migrations
                     b.HasOne("EbookPlatform.Comment", "comment")
                         .WithMany("subComments")
                         .HasForeignKey("commentID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("EbookPlatform.User", "user")
                         .WithMany("subComments")
                         .HasForeignKey("userID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("comment");
+
+                    b.Navigation("user");
+                });
+
+            modelBuilder.Entity("EbookPlatform.UserRole", b =>
+                {
+                    b.HasOne("EbookPlatform.Role", "role")
+                        .WithMany("UserRoles")
+                        .HasForeignKey("roleID")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("EbookPlatform.User", "user")
+                        .WithMany("userRoles")
+                        .HasForeignKey("userID")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("role");
 
                     b.Navigation("user");
                 });
@@ -966,18 +898,6 @@ namespace EbookPlatform.DataLayer.Migrations
                     b.Navigation("subComments");
                 });
 
-            modelBuilder.Entity("EbookPlatform.DataLayer.Entities.AdminArea.Role.Permission", b =>
-                {
-                    b.Navigation("rolePermissions");
-                });
-
-            modelBuilder.Entity("EbookPlatform.DataLayer.Entities.AdminArea.Role.Role", b =>
-                {
-                    b.Navigation("adminUsers");
-
-                    b.Navigation("rolePermissions");
-                });
-
             modelBuilder.Entity("EbookPlatform.Language", b =>
                 {
                     b.Navigation("books");
@@ -988,9 +908,21 @@ namespace EbookPlatform.DataLayer.Migrations
                     b.Navigation("Shelves");
                 });
 
+            modelBuilder.Entity("EbookPlatform.Permission", b =>
+                {
+                    b.Navigation("rolePermissions");
+                });
+
             modelBuilder.Entity("EbookPlatform.Publisher", b =>
                 {
                     b.Navigation("books");
+                });
+
+            modelBuilder.Entity("EbookPlatform.Role", b =>
+                {
+                    b.Navigation("UserRoles");
+
+                    b.Navigation("rolePermissions");
                 });
 
             modelBuilder.Entity("EbookPlatform.Shelf", b =>
@@ -1015,6 +947,8 @@ namespace EbookPlatform.DataLayer.Migrations
                     b.Navigation("ratings");
 
                     b.Navigation("subComments");
+
+                    b.Navigation("userRoles");
                 });
 #pragma warning restore 612, 618
         }
