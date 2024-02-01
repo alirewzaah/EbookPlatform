@@ -42,6 +42,7 @@ internal class Program
         builder.Services.AddTransient<IUserService, UserService>();
         builder.Services.AddTransient<IViewRenderService, RenderViewToString>();
         builder.Services.AddTransient<IRoleService, RoleService>();
+        builder.Services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
         var app = builder.Build();
         app.UseAuthentication();
         app.UseRouting();

@@ -184,7 +184,7 @@ namespace EbookPlatform.Controllers
                 {
                     var claim = new List<Claim>
                     {
-                        new Claim("userid",user.userID.ToString()),
+                        new Claim("userID",user.userID.ToString()),
                         new Claim("useraccount",user.UserName),
                         new Claim("useremail",user.email),
                     };

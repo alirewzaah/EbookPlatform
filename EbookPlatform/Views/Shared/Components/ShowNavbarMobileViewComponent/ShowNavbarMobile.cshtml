@@ -1,0 +1,46 @@
+﻿@model IEnumerable<EbookPlatform.Category>
+@{
+    Layout = null;
+}
+
+
+
+<ul class="nav-categories ul-base">
+    <li><a href="#">خانه</a></li>
+
+
+    @foreach (var item1 in Model.Where(c => c.parentID == null && c.isDeleted == false))
+    {
+        <li>
+            <a href="#" class="collapsed" type="button" data-toggle="collapse" data-target="#@item1.title" aria-expanded="false" aria-controls="@item1.title"><i class="mdi mdi-chevron-down"></i>@item1.title</a>
+            <div id="@item1.title" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample" style="">
+                <ul>
+                    @foreach (var item2 in Model.Where(c => c.parentID == item1.categoryID && c.isDeleted == false))
+                    {
+                        <li class="has-sub">
+                            <a href="#" class="category-level-2">@item2.title</a>
+                            <ul>
+                                @foreach (var subItem in Model.Where(x => x.parentID == item2.categoryID && x.isDeleted == false))
+                                {
+                                    <li><a href="#" class="category-level-3">@subItem.title</a></li>
+                                }
+
+
+                            </ul>
+                        </li>
+                    }
+
+                </ul>
+            </div>
+        </li>
+
+    }
+
+
+
+
+
+    
+           
+
+</ul>

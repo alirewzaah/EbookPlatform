@@ -15,6 +15,7 @@ namespace EbookPlatform.Core.Service.Interface
         public User Finduser(int userid, string Code);
         public User FindUserbuyeEmail(string Email);
         public User LoginUser(string email, string Password);
+        public User FindUserbyID(int ID);
 
     }
 }

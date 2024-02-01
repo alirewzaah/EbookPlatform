@@ -78,6 +78,10 @@ namespace EbookPlatform.Core.Service
         {
             return _context.users.Where(u => u.email == Email).FirstOrDefault();
         }
+        public User FindUserbyID(int ID)
+        {
+            return _context.users.Where(u => u.userID == ID).FirstOrDefault();
+        }
 
         public User LoginUser(string email, string Password)
         {
